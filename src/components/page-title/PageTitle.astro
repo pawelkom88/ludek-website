@@ -1,0 +1,18 @@
+---
+import newsIcon from "@/assets/icons/news-svgrepo-com.svg?raw";
+import "./page-title.css";
+
+const { icon, title } = Astro.props;
+
+function getIcon(icon: string) {
+  switch (icon) {
+    case "news":
+      return newsIcon;
+  }
+}
+---
+
+<div class="page-title">
+  <Fragment set:html={getIcon(icon)} />
+  <h1 class="title-heading">{title}</h1>
+</div>

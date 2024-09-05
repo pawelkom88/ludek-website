@@ -1,0 +1,10 @@
+.page-title {
+  /* max-height: 5rem; */
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.title-heading {
+  font-size: clamp(1.3rem, 0.7rem + 2vw, 4rem);
+}

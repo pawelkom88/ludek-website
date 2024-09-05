@@ -1,49 +1,71 @@
 ---
-import '@fontsource-variable/lora';
-import '@fontsource/roboto';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/footer/Footer.astro';
-import Header from '../components/header/Header.astro';
+import "@fontsource-variable/lora";
+import "@fontsource/roboto";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/footer/Footer.astro";
+import Header from "../components/header/Header.astro";
 import "../styles/global.css";
 
 interface Props {
-	title: string;
-	description?: string;
-	ogImage?: string;
-	articleDate?: string;
-	image?: string
+  title: string;
+  description?: string;
+  ogImage?: string;
+  articleDate?: string;
+  image?: string;
 }
 
-const { title, description, image, articleDate } = Astro.props
-
+const { title, description, image, articleDate } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
-	</head>
-	<body>
-		<main>
-			<Header />
-			<slot />
-			<Footer />
-		</main>
-	</body>
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      ogImage={image}
+      articleDate={articleDate}
+    />
+  </head>
+  <body>
+    <a class="sr-only" href="#maincontent">Skip to main content</a>
+    <main>
+      <Header />
+      <slot />
+      <Footer />
+    </main>
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent-clr: hsl(348.63, 99.98%, 44%);
-		--primary-clr: hsl(210, 8.33%, 14.12%);
-		-- white: hsl(0, 0%, 100%);
-		--black: hsl(0, 0%, 0%);
-	}
-	html {
-		font-family: 'Roboto', sans-serif;
-	}
+  :root {
+    --accent-clr: hsl(348.63, 99.98%, 44%);
+    --primary-clr: hsl(210, 8.33%, 14.12%);
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(0, 0%, 0%);
+    --light-gray: hsl(0, 0%, 97%);
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    --secondary-font: "Lora Variable", serif;
+    --primary-font: "Roboto", sans-serif;
+  }
 
-	h1,h2,h3,h4 {
-		font-family: 'Lora Variable', serif;
-	}
+  body {
+    font-family: var(--primary-font);
+    color: var(--primary-clr);
+  }
 
+  main {
+    width: min(1100px, 100%);
+    min-height: 100dvh;
+    margin-inline: auto;
+    display: grid;
+    grid-template-rows: auto 7rem 2rem 1fr 10rem;
+    row-gap: 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--secondary-font);
+  }
 </style>

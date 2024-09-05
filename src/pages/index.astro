@@ -1,8 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MainNav from "@/components/main-nav/MainNav";
+import PageTitle from "@/components/page-title/PageTitle";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Ludek" description='Ludek' image=''>
-	<h1>Heading</h1>
-</Layout>
+<Layout title="Ludek" description="Ludek" image="">
+  <PageTitle icon="news" title="Witaj na stronie Ludek" />
+  <MainNav />
 
+  <section id="maincontent">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat tenetur aspernatur
+    hic praesentium deserunt vel corrupti nam in suscipit enim.
+  </section>
+</Layout>

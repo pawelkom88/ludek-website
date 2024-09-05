@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
+
+.header-nav,
+.header-ul {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+
+.header-ul {
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 1rem;
+}
+
+.header-nav {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.header-link:hover {
+  fill: var(--accent-clr);
+}

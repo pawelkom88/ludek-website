@@ -1,6 +1,32 @@
 ---
-
+import { Image } from "astro:assets";
+import fbIcon from "../../assets/icons/fb-icon.svg?raw";
+import SearchIcon from "../search-icon/SearchIcon.astro";
+import SettingsIcon from "../settings-icon/SettingsIcon.astro";
+import "./header.css";
 ---
-<header>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla, reprehenderit?
+
+<header aria-label="Quick links" class="header">
+  <Image
+    src="/src/assets/icons/ludek.png"
+    alt="Ludek logo - a cartoon human walking"
+    width={90}
+    height={90}
+  />
+  <nav class="header-nav">
+    <ul class="header-ul">
+      <li><SearchIcon /></li>
+
+      <li>
+        <a href="#" class="header-link" target="_blank" rel="noopener noreferrer">
+          <Fragment set:html={fbIcon} />
+        </a>
+      </li>
+      <li><SettingsIcon /></li>
+    </ul>
+    <select>
+      <option>Polish</option>
+      <option>English</option>
+    </select>
+  </nav>
 </header>
