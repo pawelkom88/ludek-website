@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/lora';
+import '@fontsource/roboto';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/footer/Footer.astro';
 import Header from '../components/header/Header.astro';
@@ -34,6 +36,11 @@ const { title, description, image, articleDate } = Astro.props
 		
 	}
 	html {
+		font-family: 'Roboto', sans-serif;
+	}
+
+	h1,h2,h3,h4 {
+		font-family: 'Lora Variable', serif;
 	}
 
 </style>
