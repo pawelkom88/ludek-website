@@ -1,0 +1,77 @@
+---
+import { Image } from "astro:assets";
+import "./main-grid.css";
+---
+
+<section id="maincontent" class="main-grid">
+  <ol class="main-grid-item">
+    <li>
+      <h2 class="section-title">Latest news</h2>
+      <a href="#">
+        <article class="article">
+          <div class="article-image">
+            <Image
+              src="https://placehold.co/600x400"
+              alt="logo"
+              width="600"
+              height="400"
+            />
+            <div class="article-info">
+              <div class="article-date">
+                <datetime>01.01.2022</datetime>
+                <small>1 min read</small>
+              </div>
+              <p class="article-author">Author: Firstname Lastname</p>
+            </div>
+          </div>
+          <header class="article-header">
+            <h3>Article heading</h3>
+          </header>
+          <footer class="article-footer"><p>Read post</p></footer>
+        </article>
+      </a>
+    </li>
+    <ol class="sub-grid">
+      <li>
+        <a href="#">
+          <article>
+            <Image
+              src="https://placehold.co/600x400"
+              alt="logo"
+              width="600"
+              height="400"
+            />
+            <header class="article-header">
+              <h3>Article heading</h3>
+            </header>
+            <footer>
+              <p>Read post</p>
+            </footer>
+          </article>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <article>
+            <Image
+              src="https://placehold.co/600x400"
+              alt="logo"
+              width="600"
+              height="400"
+            />
+            <header class="article-header">
+              <h3>Article heading</h3>
+            </header>
+            <footer><p>Read post</p></footer>
+          </article>
+        </a>
+      </li>
+    </ol>
+  </ol>
+  <aside class="aside">
+    <h2 class="aside-title">About Ludek</h2>
+    <div>
+      <Image src="https://placehold.co/600x400" alt="logo" width="600" height="400" />
+    </div>
+  </aside>
+</section>

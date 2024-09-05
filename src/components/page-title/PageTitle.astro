@@ -1,18 +1,18 @@
 ---
-import newsIcon from "@/assets/icons/news-svgrepo-com.svg?raw";
+import { Image } from "astro:assets";
 import "./page-title.css";
 
-const { icon, title } = Astro.props;
-
-function getIcon(icon: string) {
-  switch (icon) {
-    case "news":
-      return newsIcon;
-  }
-}
+const { title } = Astro.props;
 ---
 
 <div class="page-title">
-  <Fragment set:html={getIcon(icon)} />
+  <!-- <Fragment set:html={getIcon(icon)} /> -->
+  <Image
+    src="/src/assets/icons/ludek.png"
+    alt="Ludek logo - a cartoon human walking"
+    width={90}
+    height={90}
+  />
   <h1 class="title-heading">{title}</h1>
+  <!-- <div class="ribbon"></div> -->
 </div>

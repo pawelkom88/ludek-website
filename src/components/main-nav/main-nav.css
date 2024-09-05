@@ -9,6 +9,11 @@
 
 .main-li {
   position: relative;
+  font-size: 1.2rem;
+}
+
+.main-li:last-child {
+  font-weight: bold;
 }
 
 .active-link::before {

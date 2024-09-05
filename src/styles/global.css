@@ -11,6 +11,7 @@
   */
 * {
   margin: 0;
+  padding: 0;
 }
 /*
     Typographic tweaks!
@@ -71,11 +72,11 @@ a {
   color: var(--primary-clr);
 }
 
-a:hover {
+.underline-link:hover {
   color: var(--accent-clr);
 }
 
-a:hover::after {
+.underline-linka:hover::after {
   content: "";
   position: absolute;
   top: 1.775rem;

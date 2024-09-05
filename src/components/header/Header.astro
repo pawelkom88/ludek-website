@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import fbIcon from "../../assets/icons/fb-icon.svg?raw";
 import SearchIcon from "../search-icon/SearchIcon.astro";
 import SettingsIcon from "../settings-icon/SettingsIcon.astro";
@@ -7,12 +6,6 @@ import "./header.css";
 ---
 
 <header aria-label="Quick links" class="header">
-  <Image
-    src="/src/assets/icons/ludek.png"
-    alt="Ludek logo - a cartoon human walking"
-    width={90}
-    height={90}
-  />
   <nav class="header-nav">
     <ul class="header-ul">
       <li><SearchIcon /></li>
@@ -22,7 +15,7 @@ import "./header.css";
           <Fragment set:html={fbIcon} />
         </a>
       </li>
-      <li><SettingsIcon /></li>
+      <!-- <li><SettingsIcon /></li> -->
     </ul>
     <select>
       <option>Polish</option>

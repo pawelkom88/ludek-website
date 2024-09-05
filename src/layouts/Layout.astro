@@ -1,5 +1,7 @@
 ---
+import PageTitle from "@/components/page-title/PageTitle";
 import "@fontsource-variable/lora";
+import "@fontsource/amatic-sc";
 import "@fontsource/roboto";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/footer/Footer.astro";
@@ -30,7 +32,10 @@ const { title, description, image, articleDate } = Astro.props;
   <body>
     <a class="sr-only" href="#maincontent">Skip to main content</a>
     <main>
-      <Header />
+      <div class="header-container">
+        <PageTitle title="Polish Community Group" />
+        <Header />
+      </div>
       <slot />
       <Footer />
     </main>
@@ -46,6 +51,7 @@ const { title, description, image, articleDate } = Astro.props;
     --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
     --secondary-font: "Lora Variable", serif;
     --primary-font: "Roboto", sans-serif;
+    --swanky-font: "Amatic SC", cursive;
   }
 
   body {
@@ -54,18 +60,25 @@ const { title, description, image, articleDate } = Astro.props;
   }
 
   main {
-    width: min(1100px, 100%);
+    width: min(1240px, 100%);
     min-height: 100dvh;
     margin-inline: auto;
     display: grid;
-    grid-template-rows: auto 7rem 2rem 1fr 10rem;
+    grid-template-rows: auto 2rem 1fr 10rem;
     row-gap: 1rem;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--secondary-font);
+    font-family: var(--swanky-font);
   }
 </style>
