@@ -13,11 +13,13 @@
   margin: 0;
   padding: 0;
 }
-/*
-    Typographic tweaks!
-    3. Add accessible line-height
-    4. Improve text rendering
-  */
+
+/* *:focus {
+  outline: 3px solid var(--accent-clr);
+  outline-style: dashed;
+  background-color: var(--yellow);
+} */
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -140,6 +142,25 @@ button {
   content: "X";
   width: 10px;
   height: 10px;
-  background-color: red;
+  background-color: var(--white);
   margin-left: 1rem;
+}
+
+.truncate {
+  width: 350px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lines svg {
+  display: block;
+  margin-inline: auto;
+  fill: var(--secondary-clr);
+}
+
+@media (max-width: 1024px) {
+  .lines svg {
+    display: none;
+  }
 }

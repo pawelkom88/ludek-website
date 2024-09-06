@@ -7,6 +7,12 @@
   gap: 2rem;
 }
 
+@media (max-width: 500px) {
+  .main-ul {
+    display: none;
+  }
+}
+
 .main-li {
   position: relative;
   font-size: 1.2rem;

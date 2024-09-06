@@ -43,8 +43,9 @@ const { title, description, image, articleDate } = Astro.props;
 </html>
 <style is:global>
   :root {
-    --accent-clr: hsl(348.63, 99.98%, 44%);
-    --primary-clr: hsl(210, 8.33%, 14.12%);
+    --accent-clr: hsl(354, 88%, 57%);
+    --secondary-clr: hsl(142, 20%, 61%);
+    --primary-clr: hsl(340, 9%, 13%);
     --white: hsl(0, 0%, 100%);
     --black: hsl(0, 0%, 0%);
     --light-gray: hsl(0, 0%, 97%);
@@ -63,6 +64,7 @@ const { title, description, image, articleDate } = Astro.props;
     width: min(1240px, 100%);
     min-height: 100dvh;
     margin-inline: auto;
+    padding-inline: 1rem;
     display: grid;
     grid-template-rows: auto 2rem 1fr 10rem;
     row-gap: 1rem;
