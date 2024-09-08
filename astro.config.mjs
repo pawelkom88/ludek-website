@@ -10,4 +10,11 @@ export default defineConfig({
   image: {
     remotePatterns: [{ protocol: "https" }],
   },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "pl"],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
 });

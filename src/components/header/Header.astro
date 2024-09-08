@@ -3,6 +3,8 @@ import fbIcon from "../../assets/icons/fb-icon.svg?raw";
 import LanguageSelector from "../language-selector/LanguageSelector.astro";
 import SearchIcon from "../search-icon/SearchIcon.astro";
 import "./header.css";
+
+const currentLanguageFromUrl = Astro.url.pathname.split("/")[1]
 ---
 
 <header aria-label="Quick links" class="header">
@@ -27,6 +29,6 @@ import "./header.css";
       </li>
       <!-- <li><SettingsIcon /></li> -->
     </ul>
-    <LanguageSelector />
+    <LanguageSelector lang={currentLanguageFromUrl} />
   </nav>
 </header>

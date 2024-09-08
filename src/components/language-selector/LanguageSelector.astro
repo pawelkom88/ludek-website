@@ -1,8 +1,25 @@
 ---
 import "./language-selector.css";
+
+const { lang } = Astro.props;
+
+const languages = {
+  en: { optionValue: "pl", optionText: "Polish", currentText: "English" },
+  pl: { optionValue: "en", optionText: "Angielski", currentText: "Polski" },
+};
+const { optionValue, optionText, currentText } =
+  languages[lang as keyof typeof languages];
 ---
 
-<select class="language-selector">
-  <option value="pl">Polish</option>
-  <option selected value="en">English</option>
+<select name="language-selector" class="language-selector">
+  <option disabled selected>{currentText}</option>
+  <option value={optionValue}>{optionText}</option>
 </select>
+
+<script>
+  const languageSelector = document.querySelector(".language-selector");
+  languageSelector?.addEventListener("change", (e: any) => {
+    const lang = e.target.value ;
+    location.href = `/${lang}`;
+  });
+</script>
