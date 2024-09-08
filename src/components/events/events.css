@@ -69,7 +69,7 @@
   #events-1652 .cs-item {
     list-style: none;
     /* background-color: var(--teriary-clr); */
-    background-image: url("./public/noise.webp");
+    background-image: url("/noise.webp");
     overflow: hidden;
     position: relative;
     z-index: 1;
