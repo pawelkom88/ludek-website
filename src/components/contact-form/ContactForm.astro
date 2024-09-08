@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import "./contact-form.css";
+---
+
+<section id="contact-718">
+  <div class="cs-container">
+    <picture class="cs-picture">
+      <source
+        media="(max-width: 600px)"
+        srcset="https://scontent-lhr6-1.xx.fbcdn.net/v/t1.6435-9/31956235_172992333404123_53133693253844992_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=FqyjuPE0KakQ7kNvgEUjHvr&_nc_ht=scontent-lhr6-1.xx&cb_e2o_trans=t&oh=00_AYC0lOAG0OZ6wbwbhT1AsqJHDA5urXw-jmT-93xVVhNo_A&oe=6704E7B1"
+      />
+      <source
+        media="(min-width: 601px)"
+        srcset="https://scontent-lhr6-1.xx.fbcdn.net/v/t1.6435-9/31956235_172992333404123_53133693253844992_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=FqyjuPE0KakQ7kNvgEUjHvr&_nc_ht=scontent-lhr6-1.xx&cb_e2o_trans=t&oh=00_AYC0lOAG0OZ6wbwbhT1AsqJHDA5urXw-jmT-93xVVhNo_A&oe=6704E7B1"
+      />
+      <Image
+        decoding="async"
+        src="https://scontent-lhr6-1.xx.fbcdn.net/v/t1.6435-9/31956235_172992333404123_53133693253844992_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=FqyjuPE0KakQ7kNvgEUjHvr&_nc_ht=scontent-lhr6-1.xx&cb_e2o_trans=t&oh=00_AYC0lOAG0OZ6wbwbhT1AsqJHDA5urXw-jmT-93xVVhNo_A&oe=6704E7B1"
+        alt="runner"
+        width="610"
+        height="425"
+        aria-hidden="true"
+      />
+    </picture>
+    <div class="cs-content">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="cs-text">
+        In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan
+        nonatoureanor mauris laoreet, iaculis libero quis.
+      </p>
+      <!--Form-->
+      <form class="cs-form" id="cs-form-718" name="Contact Form" method="post">
+        <label class="cs-label">
+          Name
+          <input
+            class="cs-input"
+            required
+            type="text"
+            id="name-718"
+            name="name"
+            placeholder="Name"
+          />
+        </label>
+        <label class="cs-label cs-email">
+          Email
+          <input
+            class="cs-input"
+            required
+            type="text"
+            id="email-718"
+            name="email"
+            placeholder="Email"
+          />
+        </label>
+        <label class="cs-label">
+          Message
+          <textarea
+            class="cs-input cs-textarea"
+            required
+            name="Message"
+            id="message-718"
+            placeholder="Write message..."></textarea>
+        </label>
+        <button class="cs-button-solid" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

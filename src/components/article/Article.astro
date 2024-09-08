@@ -1,0 +1,45 @@
+---
+import "./article.css"
+import { Image } from "astro:assets";
+const todayDate = new Date();
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const month = monthNames[todayDate.getMonth()]; // Get the month name from the array
+const day = todayDate.getDate();
+const year = todayDate.getFullYear();
+const formattedDate = `${month} ${day}, ${year}`;
+
+const { article } = Astro.props;
+---
+
+<a href={article.slug}>
+  <article class="article">
+    <div class="article-image">
+      <Image src={article.imageSrc} alt={article.alt} width="600" height="400" />
+      <div class="article-info">
+        <datetime>{formattedDate}</datetime>
+        <small>1 min read</small>
+      </div>
+    </div>
+    <header class="article-header">
+      <h3>{article.title}</h3>
+    </header>
+    <p class="article-text truncate">
+      {article.description}
+    </p>
+    <footer class="article-footer"><p class="read-more">Read post</p></footer>
+  </article>
+</a>

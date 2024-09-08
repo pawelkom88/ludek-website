@@ -1,0 +1,49 @@
+.aside h3,
+.aside h4 {
+  position: relative;
+  text-align: center;
+  font-size: clamp(2rem, 0.7rem + 1.5vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+
+.aside-form .separator {
+  width: fit-content;
+  margin: 0 auto 1rem;
+}
+
+.aside-info {
+  padding: 0.5rem;
+  text-align: justify;
+}
+
+.subscribe-label {
+  position: relative;
+}
+
+.subscribe-input {
+  width: 90%;
+  display: block;
+  margin-inline: auto;
+  padding: 0.5rem 1rem;
+  box-shadow: 1px 1px 1px var(--secondary-clr);
+}
+
+.subscribe-icon {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+  opacity: 0.3;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.subscribe-input:focus + .subscribe-icon {
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+  fill: var(--accent-clr);
+}
+
+.subscribe-form button {
+  margin-top: 1rem;
+  display: block;
+  margin-inline: auto;
+}

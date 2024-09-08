@@ -1,156 +1,72 @@
 ---
-import mailIcon from "@/assets/icons/bx-mail-send.svg?raw";
-import line from "@/assets/icons/line-2.svg?raw";
-import separator from "@/assets/icons/separator.png";
-import { Image } from "astro:assets";
+import AboutCard from "../about-card/AboutCard.astro";
+import Article from "../article/Article.astro";
+import SubscriptionForm from "../subscription-form/SubscriptionForm.astro";
+import ThreeLineSeparator from "../three-line-separator/ThreeLineSeparator.astro";
 import "./main-grid.css";
 
-const todayDate = new Date();
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+type Article = {
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  slug: string;
+  imageSrc: string;
+  alt: string;
+};
 
-const month = monthNames[todayDate.getMonth()]; // Get the month name from the array
-const day = todayDate.getDate();
-const year = todayDate.getFullYear();
-const formattedDate = `${month} ${day}, ${year}`;
+const mainArticle = {
+  title: "Article heading",
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  date: "01.01.2022",
+  author: "Pawel Komorkiewicz",
+  slug: "/article-slug",
+  imageSrc:
+    "https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/31969804_173104830059540_385201671019429888_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=UN0AkR6kubkQ7kNvgEcGshj&_nc_ht=scontent-lhr8-1.xx&cb_e2o_trans=t&oh=00_AYCtLTU-gAksX0-xK5B4XX4m_pMkJcfacVyxCF9R6mdQKw&oe=6704C0DB",
+  alt: "logo",
+};
+
+const exampleArticle: Article[] = [
+  {
+    title: "Article heading",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    date: "01.01.2022",
+    author: "Pawel Komorkiewicz",
+    slug: "/article-slug",
+    imageSrc:
+      "https://scontent-lhr6-2.xx.fbcdn.net/v/t1.6435-9/31945832_172989003404456_7573634261912125440_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=RzK8mXDwp5AQ7kNvgG8TiXr&_nc_ht=scontent-lhr6-2.xx&cb_e2o_trans=t&_nc_gid=A_Wxum11ZnCpHVoLXLAmTX_&oh=00_AYCUnZtl4rQUNv5lMwSBQvMx3wILqWy5GkyWHiB8mZx8fQ&oe=670230B9",
+    alt: "logo",
+  },
+  {
+    title: "Article heading",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    date: "01.01.2022",
+    author: "Pawel Komorkiewicz",
+    slug: "/article-slug",
+    imageSrc:
+      "https://scontent-lhr6-2.xx.fbcdn.net/v/t1.6435-9/31957396_173188443384512_1440949119647481856_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=o6_5VlMxK8gQ7kNvgGv8uLM&_nc_ht=scontent-lhr6-2.xx&cb_e2o_trans=t&_nc_gid=AAng-MLSYvj8C_FN8CHxyxt&oh=00_AYCsh4FnI2eHSzYmwhJHAd1bnTYvjJBxcNC6KEsFHNO-Kw&oe=6704F4CD",
+    alt: "logo",
+  },
+];
 ---
 
 <section id="maincontent" class="main-grid">
   <ol class="main-grid-item">
     <li>
       <h2 class="section-title">Latest news</h2>
-      <a href="#">
-        <article class="article">
-          <div class="article-image">
-            <Image
-              src="https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/31944913_173020253401331_6071812527828762624_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=HwLZe5hYoMAQ7kNvgEBBgtx&_nc_ht=scontent-lhr8-1.xx&cb_e2o_trans=t&oh=00_AYC81eKyNSKBN4WAEBLz6JZxVTDrCf7gv6VQIBMTf9jnPQ&oe=670229D8"
-              alt="main news"
-              width="600"
-              height="400"
-            />
-            <div class="article-info">
-              <datetime>{formattedDate}</datetime>
-              <small>1 min read</small>
-            </div>
-          </div>
-          <header class="article-header">
-            <h3>Article heading</h3>
-          </header>
-          <p class="article-text truncate">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae.
-            lorem10
-          </p>
-          <footer class="article-footer"><p>Read post</p></footer>
-        </article>
-      </a>
+      <Article article={mainArticle} />
     </li>
     <ol class="sub-grid">
-      <li>
-        <a href="#">
-          <article class="article">
-            <div class="article-image">
-              <Image
-                src="https://scontent-lhr6-1.xx.fbcdn.net/v/t1.6435-9/31956235_172992333404123_53133693253844992_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=lrEMkItDOj0Q7kNvgGLOllq&_nc_ht=scontent-lhr6-1.xx&cb_e2o_trans=t&_nc_gid=AielgV6xCzUiXaDSP8DBR0I&oh=00_AYD4y4r3IRHAn8f80R3J6gjbm7cRWC69D4ASSkczJzmFtw&oe=670244B1"
-                alt="logo"
-                width="600"
-                height="400"
-              />
-              <div class="article-info">
-                <datetime>{formattedDate}</datetime>
-                <small>1 min read</small>
-              </div>
-            </div>
-            <header class="article-header">
-              <h3>Article heading</h3>
-            </header>
-            <p class="article-text truncate">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae.
-              lorem10
-            </p>
-            <footer class="article-footer"><p>Read post</p></footer>
-          </article>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <article class="article">
-            <div class="article-image">
-              <Image
-                src="https://scontent-lhr6-2.xx.fbcdn.net/v/t1.6435-9/31945832_172989003404456_7573634261912125440_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=RzK8mXDwp5AQ7kNvgG8TiXr&_nc_ht=scontent-lhr6-2.xx&cb_e2o_trans=t&_nc_gid=A_Wxum11ZnCpHVoLXLAmTX_&oh=00_AYCUnZtl4rQUNv5lMwSBQvMx3wILqWy5GkyWHiB8mZx8fQ&oe=670230B9"
-                alt="logo"
-                width="600"
-                height="400"
-              />
-              <div class="article-info">
-                <datetime>{formattedDate}</datetime>
-                <small>1 min read</small>
-              </div>
-            </div>
-            <header class="article-header">
-              <h3>Article heading</h3>
-            </header>
-            <p class="article-text truncate">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, beatae.
-              lorem10
-            </p>
-            <footer class="article-footer"><p>Read post</p></footer>
-          </article>
-        </a>
-      </li>
+      {exampleArticle.map((article) => <Article article={article} />)}
     </ol>
   </ol>
   <aside class="aside">
-    <h2 class="aside-title">About Ludek</h2>
-    <Image
-      class="aside-image"
-      src="https://scontent-lhr8-2.xx.fbcdn.net/v/t1.6435-9/31953515_172989140071109_5947246630724960256_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=Mp3Rsit1OiYQ7kNvgEDy3tQ&_nc_ht=scontent-lhr8-2.xx&cb_e2o_trans=t&oh=00_AYAprwXhSPbZoZaBC76X6yJBUNbWBo9vC9dDMeqsF8V8yQ&oe=6702280D"
-      alt="ludek"
-      width="600"
-      height="400"
-    />
-    <div class="aside-info">
-      <h3>Hi, We're Ludek</h3>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error animi eum
-        laudantium explicabo officia nostrum recusandae fuga. Aliquam, ab sunt.
-      </p>
-    </div>
-    <!-- component ? -->
-    <div class="lines">
-      <Fragment set:html={line} />
-    </div>
-    <div class="aside-form">
-      <h4>Join the maling list</h4>
-      <Image class="separator" src={separator} alt="separator" width="153" height="11" />
-      <form action="#" class="subscribe-form">
-        <label class="subscribe-label" for="subscribe">
-          <input
-            name="subscribe"
-            class="subscribe-input"
-            type="email"
-            id="subscribe"
-            placeholder="john.doe@domain.com"
-            required
-          />
-          <div class="subscribe-icon">
-            <Fragment set:html={mailIcon} />
-          </div>
-        </label>
-        <button class="main-btn">Subscribe</button>
-      </form>
-    </div>
+    <AboutCard />
+    <ThreeLineSeparator />
+    <SubscriptionForm />
   </aside>
 </section>
-
+<a href="/all-posts" class="read-more">See all posts</a>

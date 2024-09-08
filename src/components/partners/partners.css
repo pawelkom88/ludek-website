@@ -1,0 +1,35 @@
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #logos-572 {
+    padding: clamp(2rem, 4vw, 5rem) 1rem;
+    /* background-color: var(--primary-clr); */
+  }
+  #logos-572 .cs-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #logos-572 .cs-logo {
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    margin: 0;
+    display: block;
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #logos-572 .cs-container {
+    justify-content: space-between;
+  }
+  #logos-572 .cs-logo {
+    width: 20%;
+    max-width: max-content;
+    height: auto;
+    display: block;
+  }
+}

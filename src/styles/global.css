@@ -105,7 +105,7 @@ button {
   cursor: pointer;
 }
 
-.main-btn {
+/* .main-btn {
   background: url("../assets/icons/btn-bg.svg") no-repeat;
   width: 216px;
   min-width: 200px;
@@ -128,9 +128,9 @@ button {
     height: 30px;
     background-image: url("../assets/icons/btn-small-bg.svg") t;
   }
-}
+} */
 
-.main-btn:hover {
+/* .main-btn:hover {
   transform: translateY(-2px);
   box-shadow:
     rgba(0, 0, 0, 0.25) 0px 50px 100px -20px,
@@ -144,6 +144,37 @@ button {
   height: 10px;
   background-color: var(--white);
   margin-left: 1rem;
+} */
+
+.cs-button-solid {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+  color: var(--white);
+  min-width: 9.375rem;
+  padding: 0 1.5rem;
+  background-color: var(--primary-clr);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.cs-button-solid:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  background: var(--accent-clr);
+  opacity: 1;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 0.3s;
+}
+.cs-button-solid:hover:before {
+  width: 100%;
 }
 
 .truncate {
@@ -153,14 +184,26 @@ button {
   text-overflow: ellipsis;
 }
 
-.lines svg {
-  display: block;
-  margin-inline: auto;
-  fill: var(--secondary-clr);
-}
-
 @media (max-width: 1024px) {
   .lines svg {
     display: none;
   }
+}
+
+.read-more {
+  font-weight: bold;
+  position: relative;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.read-more::after {
+  content: "\2192";
+  position: absolute;
+  bottom: -0.5rem;
+  color: var(--secondary-clr);
+  font-size: 2rem;
+  margin-left: 0.5rem;
 }

@@ -1,7 +1,7 @@
 ---
 import fbIcon from "../../assets/icons/fb-icon.svg?raw";
+import LanguageSelector from "../language-selector/LanguageSelector.astro";
 import SearchIcon from "../search-icon/SearchIcon.astro";
-import SettingsIcon from "../settings-icon/SettingsIcon.astro";
 import "./header.css";
 ---
 
@@ -15,11 +15,18 @@ import "./header.css";
           <Fragment set:html={fbIcon} />
         </a>
       </li>
+      <li>
+        <a href="#" class="header-link" target="_blank" rel="noopener noreferrer">
+          <Fragment set:html={fbIcon} />
+        </a>
+      </li>
+      <li>
+        <a href="#" class="header-link" target="_blank" rel="noopener noreferrer">
+          <Fragment set:html={fbIcon} />
+        </a>
+      </li>
       <!-- <li><SettingsIcon /></li> -->
     </ul>
-    <select>
-      <option>Polish</option>
-      <option>English</option>
-    </select>
+    <LanguageSelector />
   </nav>
 </header>

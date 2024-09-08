@@ -1,0 +1,27 @@
+---
+import mailIcon from "@/assets/icons/bx-mail-send.svg?raw";
+import separator from "@/assets/icons/separator.png";
+import { Image } from "astro:assets";
+import "./subscription-form.css";
+---
+
+<div class="aside-form">
+  <h4>Join the maling list</h4>
+  <Image class="separator" src={separator} alt="separator" width="153" height="11" />
+  <form action="#" class="subscribe-form">
+    <label class="subscribe-label" for="subscribe">
+      <input
+        name="subscribe"
+        class="subscribe-input"
+        type="email"
+        id="subscribe"
+        placeholder="john.doe@domain.com"
+        required
+      />
+      <div class="subscribe-icon">
+        <Fragment set:html={mailIcon} />
+      </div>
+    </label>
+    <button class="cs-button-solid">Subscribe</button>
+  </form>
+</div>

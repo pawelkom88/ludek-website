@@ -1,0 +1,9 @@
+.language-selector {
+  position: relative;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--primary-clr);
+  box-shadow: 2px 2px 1px var(--secondary-clr);
+  font-weight: bold;
+  cursor: pointer;
+}

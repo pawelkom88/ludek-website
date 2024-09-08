@@ -1,0 +1,76 @@
+.article {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.article:hover .article-image img {
+  transform: scale(1.1);
+}
+
+.article:hover .article-header h3,
+.article:hover .article-text {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--secondary-clr);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-skip-ink: none;
+}
+
+.article-image {
+  position: relative;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+.article-image img {
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
+}
+
+.article-image::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.3rem;
+  background-color: var(--accent-clr);
+}
+
+.article-info {
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  color: var(--white);
+  background-color: var(--accent-clr);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.article-info datetime {
+  font-size: 0.9rem;
+  background-color: var(--white);
+  color: var(--primary-clr);
+}
+
+.article-info datetime,
+.article-info small {
+  padding: 0.2rem;
+  font-weight: bold;
+}
+
+.article-header,
+.article-footer,
+.article-text {
+  padding: 1rem;
+}
+
+.article-header h3 {
+  margin-top: 0.5rem;
+  font-size: clamp(2rem, 0.7rem + 1.8vw, 3rem);
+}

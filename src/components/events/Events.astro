@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import "./events.css";
+---
+
+<section id="events-1652">
+  <div class="cs-container">
+    <div class="cs-image">
+      <picture class="cs-picture">
+        <!--Mobile Image-->
+        <source
+          media="(max-width: 600px)"
+          srcset="https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/31957511_173025570067466_2365911610066731008_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=Xw5IrQshU1wQ7kNvgFjUjEO&_nc_ht=scontent-lhr8-1.xx&cb_e2o_trans=t&_nc_gid=AmHzoSYmOEpSlpFMdf-QYrx&oh=00_AYBYV4sPR_dwXDPLdn_qJe7ED9oflYwJfKbu6PiZJFiooA&oe=6704DFC7"
+        />
+        <!--Tablet and above Image-->
+        <source
+          media="(min-width: 601px)"
+          srcset="https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/31957511_173025570067466_2365911610066731008_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=Xw5IrQshU1wQ7kNvgFjUjEO&_nc_ht=scontent-lhr8-1.xx&cb_e2o_trans=t&_nc_gid=AmHzoSYmOEpSlpFMdf-QYrx&oh=00_AYBYV4sPR_dwXDPLdn_qJe7ED9oflYwJfKbu6PiZJFiooA&oe=6704DFC7"
+        />
+        <Image
+          src="https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/31957511_173025570067466_2365911610066731008_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=Xw5IrQshU1wQ7kNvgFjUjEO&_nc_ht=scontent-lhr8-1.xx&cb_e2o_trans=t&_nc_gid=AmHzoSYmOEpSlpFMdf-QYrx&oh=00_AYBYV4sPR_dwXDPLdn_qJe7ED9oflYwJfKbu6PiZJFiooA&oe=6704DFC7"
+          alt="busines meeting"
+          width="522"
+          height="609"
+          aria-hidden="true"
+        />
+      </picture>
+    </div>
+    <div class="cs-events">
+      <div class="cs-content">
+        <h3 class="section-title">Upcoming Events</h3>
+      </div>
+      <ul class="cs-card-group">
+        <li class="cs-item">
+          <span class="cs-date">
+            <strong>26</strong>
+            Oct
+          </span>
+          <div class="cs-info-wrapper">
+            <div class="cs-info">
+              <h4 class="cs-h3">Business Transformation Summit</h4>
+              <span class="cs-location">1250 23rd Street NW, DC 20037</span>
+              <span class="cs-time">
+                <Image
+                  class="cs-icon"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-clock.svg"
+                  alt="icon"
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+                12:00AM - 02:00PM
+              </span>
+            </div>
+            <div class="cs-button-wrapper">
+              <a href="" class="cs-button-solid">More info</a>
+            </div>
+          </div>
+        </li>
+        <li class="cs-item">
+          <span class="cs-date">
+            <strong>22</strong>
+            Oct
+          </span>
+          <div class="cs-info-wrapper">
+            <div class="cs-info">
+              <h4 class="cs-h3">Consulting Excellence Conference</h4>
+              <span class="cs-location">700 Broadway, New York, NY 1000</span>
+              <span class="cs-time">
+                <Image
+                  class="cs-icon"
+                  src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/gold-clock.svg"
+                  alt="icon"
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                />
+                02:00AM - 4:00PM
+              </span>
+            </div>
+            <div class="cs-button-wrapper">
+              <a href="" class="cs-button-solid">More info</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a href="/all-posts" class="read-more">See all events</a>
+</section>

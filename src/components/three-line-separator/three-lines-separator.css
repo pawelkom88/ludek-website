@@ -1,0 +1,5 @@
+.lines svg {
+  display: block;
+  margin-inline: auto;
+  fill: var(--secondary-clr);
+}
