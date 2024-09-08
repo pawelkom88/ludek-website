@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import  ludekLogo  from "@/assets/icons/ludek.png";
 import "./page-title.css";
 
 const { title } = Astro.props;
@@ -9,7 +10,7 @@ const { title } = Astro.props;
   <!-- <Fragment set:html={getIcon(icon)} /> -->
   <Image
     class="logo"
-    src="/src/assets/icons/ludek.png"
+    src={ludekLogo}
     alt="Ludek logo - a cartoon human walking"
     width={90}
     height={90}

@@ -52,7 +52,7 @@
     /* 20px - 32px left and right */
     padding: clamp(1.25rem, 4.18vw, 3rem) clamp(1.25rem, 4.18vw, 2rem);
     /* background-color: var(--teriary-clr); */
-    background-image: url("../../assets/images/noise.webp");
+    background-image: url("noise.webp");
     box-shadow: 2px 2px 2px var(--secondary-clr);
     display: flex;
     justify-content: space-between;
