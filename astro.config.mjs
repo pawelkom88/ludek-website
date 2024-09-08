@@ -8,8 +8,6 @@ export default defineConfig({
   adapter: netlify(),
   integrations: [sitemap()],
   image: {
-    domains: [
-      "https://csimg.nyc3.cdn.digitaloceanspaces.com,https://scontent-lhr6-2.xx.fbcdn.net,https://scontent-lhr8-1.xx.fbcdn.net",
-    ],
+    remotePatterns: [{ protocol: "https" }],
   },
 });
