@@ -1,27 +1,42 @@
 ---
-import type { PostQueryResponse } from "src/types/types";
-import { loadAllPosts } from "src/utils/helpers";
+import type { EntryFieldTypes } from "contentful";
+import { contentfulClient } from "src/lib/contentful";
 import AboutCard from "../about-card/AboutCard.astro";
 import Article from "../article/Article.astro";
 import SubscriptionForm from "../subscription-form/SubscriptionForm.astro";
 import ThreeLineSeparator from "../three-line-separator/ThreeLineSeparator.astro";
 import "./main-grid.css";
 
+export interface NewsPosts {
+  contentTypeId: "news";
+  fields: {
+    title: EntryFieldTypes.Text;
+    content: EntryFieldTypes.RichText;
+    image: EntryFieldTypes.AssetLink;
+    date: EntryFieldTypes.Date;
+    slug: EntryFieldTypes.Text;
+    author: EntryFieldTypes.Text;
+  };
+}
 const { lang } = Astro.props;
-const data = await loadAllPosts(lang);
-const [mainPost, ...otherPosts]: PostQueryResponse["posts"]["edges"] =
-  data?.posts.edges || [];
-const firstTwoPosts = otherPosts.slice(0, 2);
+
+const entries = await contentfulClient.getEntries<NewsPosts>({
+  content_type: "news",
+  // function !
+  locale: lang === "en" ? "en-GB" : "pl",
+});
+
+const [firstPost, ...restPosts] = entries.items.map((entry) => entry.fields);
 ---
 
 <section id="maincontent" class="main-grid">
   <ol class="main-grid-item">
     <li>
       <h2 class="section-title">Latest news</h2>
-      <Article article={mainPost.node} />
+      <Article article={firstPost} />
     </li>
     <ol class="sub-grid">
-      {firstTwoPosts.map((article) => <Article article={article.node} />)}
+      {restPosts.map((article) => <Article article={article} />)}
     </ol>
   </ol>
   <aside class="aside">

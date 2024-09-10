@@ -2,7 +2,9 @@
 import { formatDate, getLanguageFromUrl } from "@/utils/helpers";
 import { Image } from "astro:assets";
 import "./article.css";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 const { article } = Astro.props;
+console.log(article);
 
 const currentLanguageFromUrl = getLanguageFromUrl(Astro.url.pathname);
 ---
@@ -12,8 +14,8 @@ const currentLanguageFromUrl = getLanguageFromUrl(Astro.url.pathname);
     <div class="article-image-container">
       <Image
         class="article-image"
-        src={article?.featuredImage.node.mediaItemUrl}
-        alt={article?.featuredImage.node.altText || ""}
+        src={`https:${article?.image.fields.file.url}`}
+        alt={article?.image.fields.title || ""}
         width="600"
         height="400"
       />
@@ -25,8 +27,8 @@ const currentLanguageFromUrl = getLanguageFromUrl(Astro.url.pathname);
     <header class="article-header">
       <h3>{article.title}</h3>
     </header>
-    <div class="article-text truncate">
-      <Fragment set:html={article.excerpt.slice(0, 120) + "..."} />
+    <!-- set blocks and style them -->
+    <div set:html={documentToHtmlString(article.content)} class="article-text truncate">
     </div>
     <footer class="article-footer"><p class="read-more">Read post</p></footer>
   </article>
