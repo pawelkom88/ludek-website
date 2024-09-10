@@ -7,8 +7,6 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { contentfulClient } from "src/lib/contentful";
 import "./news.css";
 
-export const prerender = true;
-
 export async function getStaticPaths() {
   const entries = await contentfulClient.getEntries<NewsPosts>({
     content_type: "news",

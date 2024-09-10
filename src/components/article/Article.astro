@@ -4,8 +4,6 @@ import { Image } from "astro:assets";
 import "./article.css";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 const { article } = Astro.props;
-console.log(article);
-
 const currentLanguageFromUrl = getLanguageFromUrl(Astro.url.pathname);
 ---
 
