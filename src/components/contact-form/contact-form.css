@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 3.25rem;
+    gap: 1rem;
   }
   #contact-718 .cs-picture {
     width: 100%;
@@ -99,7 +99,7 @@
     max-width: 80rem;
     flex-direction: row;
     justify-content: space-between;
-    gap: 3.25rem;
+    gap: 1rem;
   }
   #contact-718 .cs-picture {
     height: 51.875rem;

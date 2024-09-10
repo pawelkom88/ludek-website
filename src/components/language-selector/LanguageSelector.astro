@@ -1,25 +1,53 @@
 ---
 import "./language-selector.css";
-
-const { lang } = Astro.props;
-
-const languages = {
-  en: { optionValue: "pl", optionText: "Polish", currentText: "English" },
-  pl: { optionValue: "en", optionText: "Angielski", currentText: "Polski" },
-};
-const { optionValue, optionText, currentText } =
-  languages[lang as keyof typeof languages];
+const currentLang = Astro.url.pathname.split("/")[1];
 ---
 
 <select name="language-selector" class="language-selector">
-  <option disabled selected>{currentText}</option>
-  <option value={optionValue}>{optionText}</option>
+  <option value="en">{currentLang === "en" ? "English" : "Angielski"}</option>
+  <option value="pl">{currentLang === "pl" ? "Polski" : "Polish"}</option>
 </select>
 
-<script>
-  const languageSelector = document.querySelector(".language-selector");
-  languageSelector?.addEventListener("change", (e: any) => {
-    const lang = e.target.value ;
-    location.href = `/${lang}`;
+<script is:inline>
+  function initLanguageSelector() {
+    const languageSelector = document.querySelector(".language-selector");
+
+    if (!languageSelector) return;
+
+    const currentLang = window.location.pathname.split("/")[1] || "en";
+    languageSelector.value = currentLang;
+    localStorage.setItem("preferredLanguage", currentLang);
+
+    languageSelector.addEventListener("change", (e) => {
+      const newLang = e.target.value;
+      localStorage.setItem("preferredLanguage", newLang);
+      window.location.href = createUrl(newLang);
+    });
+  }
+
+  function updateLanguageFromStorage() {
+    const preferredLang = localStorage.getItem("preferredLanguage");
+    if (preferredLang) {
+      const currentLang = window.location.pathname.split("/")[1];
+      if (currentLang !== preferredLang) {
+        window.location.href = createUrl(preferredLang);
+      }
+    }
+  }
+
+  function createUrl(newLang) {
+    const url = new URL(window.location.href);
+    const pathParts = url.pathname.split("/");
+    pathParts[1] = newLang;
+    const newPath = pathParts.join("/");
+    return `${newPath}${url.search}${url.hash}`;
+  }
+
+  initLanguageSelector();
+  updateLanguageFromStorage();
+
+  document.addEventListener("astro:after-swap", function () {
+    initLanguageSelector();
+    updateLanguageFromStorage();
   });
 </script>

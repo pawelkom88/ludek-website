@@ -1,4 +1,5 @@
 ---
+home: "Strona główna"
 news: "Aktualności"
 journal: "Dziennik"
 blog: "Blog"

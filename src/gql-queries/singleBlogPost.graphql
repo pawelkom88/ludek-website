@@ -1,0 +1,24 @@
+query getSinglePost($id: ID!, $language: LanguageCodeFilterEnum!) {
+  post(id: $id, idType: DATABASE_ID, where: { language: $language }) {
+    id
+    title
+    excerpt
+    content
+    slug
+    language {
+      code
+      locale
+    }
+    author {
+      node {
+        name
+      }
+    }
+    featuredImage {
+      node {
+        mediaItemUrl
+        altText
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+---
+import SettingsIcon from "@/components/settings-icon/SettingsIcon";
+import Layout from "@/layouts/Layout";
+import { formatDate, loadAllPosts } from "@/utils/helpers";
+import { Image } from "astro:assets";
+import "./news.css";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const languages = ["pl", "en"];
+
+  const allPaths = await Promise.all(
+    languages.map(async (lang) => {
+      const data = await loadAllPosts(lang);
+
+      const articlePaths =
+        data?.posts.edges.map((article) => ({
+          params: { lang, slug: article.node.slug },
+          props: { article: article.node },
+        })) || [];
+
+      return articlePaths;
+    })
+  );
+
+  return allPaths.flat();
+}
+
+const { article } = Astro.props;
+console.log(article);
+---
+
+<Layout title="Ludek" description="Ludek" image="">
+  <article class="article">
+    <header class="article-header title-heading article-header-single">
+      <h1>{article.title}</h1>
+      <SettingsIcon />
+    </header>
+    <br />
+    <div class="article-image-container">
+      <Image
+        class="article-image article-image-single"
+        src={article?.featuredImage.node.mediaItemUrl}
+        alt={article?.featuredImage.node.altText || ""}
+        width="650"
+        height="450"
+      />
+    </div>
+    <div class="article-text article-text-single">
+      <Fragment set:html={article.content} />
+    </div>
+    <br />
+    <hr class="article-hr" />
+    <footer class="article-footer-single">
+      <datetime>Posted: {formatDate(article.date)}</datetime>
+      <p>Written by: {article.author.node.name}</p>
+    </footer>
+  </article>
+</Layout>

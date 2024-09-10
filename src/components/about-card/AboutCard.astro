@@ -1,5 +1,9 @@
 ---
 import { Image } from "astro:assets";
+
+const { lang } = Astro.params;
+
+console.log(lang);
 ---
 
 <Fragment>
@@ -17,7 +21,7 @@ import { Image } from "astro:assets";
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error animi eum laudantium
       explicabo officia nostrum recusandae fuga. Aliquam, ab sunt.
     </p>
-    <br/>
-    <a class="read-more" href="/about">Read more</a>
+    <br />
+    <a class="read-more" href=`/${lang}/about`>Read more</a>
   </div>
 </Fragment>

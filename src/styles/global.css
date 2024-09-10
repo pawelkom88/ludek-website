@@ -177,12 +177,11 @@ button {
   width: 100%;
 }
 
-.truncate {
-  width: 350px;
+/* .truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+} */
 
 @media (max-width: 1024px) {
   .lines svg {

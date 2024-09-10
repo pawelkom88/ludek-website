@@ -1,25 +1,37 @@
 ---
 import "./main-nav.css";
-import { getEntry } from 'astro:content';
+import { getEntry } from "astro:content";
 
 const { lang } = Astro.props;
 
-const navContent = await getEntry('nav', lang);
+const navContent = await getEntry("nav", lang);
 const links = navContent?.data || {};
-
 ---
 
 <nav class="main-nav">
   <ul class="main-ul">
-    {Object.entries(links).map(([key, value], index) => (
-      <li class="main-li">
-        <a 
-          class={`underline-link ${index === 0 ? 'active-link' : ''}`} 
-          href={key}
-        >
-          {value}
-        </a>
-      </li>
-    ))}
+    {
+      Object.entries(links).map(([key, value]) => {
+        const link = key === "home" ? `/${lang}` : `/${lang}/${key}`;
+
+        return (
+          <li class="main-li">
+            <a class={`underline-link`} href={`${link}`}>
+              {value}
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
 </nav>
+
+<script>
+  const links = document.querySelector(".main-ul");
+
+  // links?.addEventListener("click", (e: MouseEvent) => {
+  //   if (e.currentTarget === "li") {
+  //     e.currentTarget.classList.toggle("active-link");
+  //   }
+  // });
+</script>

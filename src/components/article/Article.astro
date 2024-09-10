@@ -1,45 +1,33 @@
 ---
-import "./article.css"
+import { formatDate, getLanguageFromUrl } from "@/utils/helpers";
 import { Image } from "astro:assets";
-const todayDate = new Date();
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const month = monthNames[todayDate.getMonth()]; // Get the month name from the array
-const day = todayDate.getDate();
-const year = todayDate.getFullYear();
-const formattedDate = `${month} ${day}, ${year}`;
-
+import "./article.css";
 const { article } = Astro.props;
+
+const currentLanguageFromUrl = getLanguageFromUrl(Astro.url.pathname);
 ---
 
-<a href={article.slug}>
+<a href={`/${currentLanguageFromUrl}/news/${article.slug}`}>
   <article class="article">
-    <div class="article-image">
-      <Image src={article.imageSrc} alt={article.alt} width="600" height="400" />
+    <div class="article-image-container">
+      <Image
+        class="article-image"
+        src={article?.featuredImage.node.mediaItemUrl}
+        alt={article?.featuredImage.node.altText || ""}
+        width="600"
+        height="400"
+      />
       <div class="article-info">
-        <datetime>{formattedDate}</datetime>
-        <small>1 min read</small>
+        <datetime>{formatDate(article.date)}</datetime>
+        <div></div>
       </div>
     </div>
     <header class="article-header">
       <h3>{article.title}</h3>
     </header>
-    <p class="article-text truncate">
-      {article.description}
-    </p>
+    <div class="article-text truncate">
+      <Fragment set:html={article.excerpt.slice(0, 120) + "..."} />
+    </div>
     <footer class="article-footer"><p class="read-more">Read post</p></footer>
   </article>
 </a>

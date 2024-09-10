@@ -1,4 +1,5 @@
 ---
+home: "Home"
 news: "News"
 journal: "Journal"
 blog: "Blog"

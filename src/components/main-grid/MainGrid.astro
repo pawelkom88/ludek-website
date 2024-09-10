@@ -1,66 +1,27 @@
 ---
+import type { PostQueryResponse } from "src/types/types";
+import { loadAllPosts } from "src/utils/helpers";
 import AboutCard from "../about-card/AboutCard.astro";
 import Article from "../article/Article.astro";
 import SubscriptionForm from "../subscription-form/SubscriptionForm.astro";
 import ThreeLineSeparator from "../three-line-separator/ThreeLineSeparator.astro";
 import "./main-grid.css";
 
-type Article = {
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  slug: string;
-  imageSrc: string;
-  alt: string;
-};
-
-const mainArticle = {
-  title: "Article heading",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  date: "01.01.2022",
-  author: "Pawel Komorkiewicz",
-  slug: "/article-slug",
-  imageSrc:
-    "https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/31969804_173104830059540_385201671019429888_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=UN0AkR6kubkQ7kNvgEcGshj&_nc_ht=scontent-lhr8-1.xx&cb_e2o_trans=t&oh=00_AYCtLTU-gAksX0-xK5B4XX4m_pMkJcfacVyxCF9R6mdQKw&oe=6704C0DB",
-  alt: "logo",
-};
-
-const exampleArticle: Article[] = [
-  {
-    title: "Article heading",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    date: "01.01.2022",
-    author: "Pawel Komorkiewicz",
-    slug: "/article-slug",
-    imageSrc:
-      "https://scontent-lhr6-2.xx.fbcdn.net/v/t1.6435-9/31945832_172989003404456_7573634261912125440_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=RzK8mXDwp5AQ7kNvgG8TiXr&_nc_ht=scontent-lhr6-2.xx&cb_e2o_trans=t&_nc_gid=A_Wxum11ZnCpHVoLXLAmTX_&oh=00_AYCUnZtl4rQUNv5lMwSBQvMx3wILqWy5GkyWHiB8mZx8fQ&oe=670230B9",
-    alt: "logo",
-  },
-  {
-    title: "Article heading",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    date: "01.01.2022",
-    author: "Pawel Komorkiewicz",
-    slug: "/article-slug",
-    imageSrc:
-      "https://scontent-lhr6-2.xx.fbcdn.net/v/t1.6435-9/31957396_173188443384512_1440949119647481856_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=o6_5VlMxK8gQ7kNvgGv8uLM&_nc_ht=scontent-lhr6-2.xx&cb_e2o_trans=t&_nc_gid=AAng-MLSYvj8C_FN8CHxyxt&oh=00_AYCsh4FnI2eHSzYmwhJHAd1bnTYvjJBxcNC6KEsFHNO-Kw&oe=6704F4CD",
-    alt: "logo",
-  },
-];
+const { lang } = Astro.props;
+const data = await loadAllPosts(lang);
+const [mainPost, ...otherPosts]: PostQueryResponse["posts"]["edges"] =
+  data?.posts.edges || [];
+const firstTwoPosts = otherPosts.slice(0, 2);
 ---
 
 <section id="maincontent" class="main-grid">
   <ol class="main-grid-item">
     <li>
       <h2 class="section-title">Latest news</h2>
-      <Article article={mainArticle} />
+      <Article article={mainPost.node} />
     </li>
     <ol class="sub-grid">
-      {exampleArticle.map((article) => <Article article={article} />)}
+      {firstTwoPosts.map((article) => <Article article={article.node} />)}
     </ol>
   </ol>
   <aside class="aside">
@@ -69,4 +30,4 @@ const exampleArticle: Article[] = [
     <SubscriptionForm />
   </aside>
 </section>
-<a href="/all-posts" class="read-more">See all posts</a>
+<a href={`/${lang}/news/`} class="read-more">See all posts</a>

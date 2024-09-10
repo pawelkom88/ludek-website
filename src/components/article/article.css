@@ -7,12 +7,11 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.article:hover .article-image img {
+.article:hover .article-image {
   transform: scale(1.1);
 }
 
-.article:hover .article-header h3,
-.article:hover .article-text {
+.article:hover .article-header h3 {
   text-decoration: underline;
   text-decoration-style: wavy;
   text-decoration-color: var(--secondary-clr);
@@ -21,24 +20,26 @@
   text-decoration-skip-ink: none;
 }
 
-.article-image {
+.article-image-container {
   position: relative;
-  height: 100%;
   transition: transform 0.2s ease-in-out;
   overflow: hidden;
 }
 
-.article-image img {
-  object-fit: cover;
-  transition: transform 0.2s ease-in-out;
-}
-
-.article-image::after {
+.article-image-container::after {
   content: "";
   position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 0.3rem;
   background-color: var(--accent-clr);
+}
+
+.article-image {
+  max-height: 500px;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out;
 }
 
 .article-info {
@@ -58,16 +59,19 @@
   color: var(--primary-clr);
 }
 
-.article-info datetime,
-.article-info small {
-  padding: 0.2rem;
+.article-info div {
+  height: 1.5rem;
+}
+
+.article-info datetime {
+  padding: 0.3rem;
   font-weight: bold;
 }
 
 .article-header,
 .article-footer,
 .article-text {
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .article-header h3 {

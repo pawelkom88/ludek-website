@@ -1,0 +1,27 @@
+export query loadAllPosts($language: LanguageCodeFilterEnum!) {
+  posts(where: { language: $language }) {
+    edges {
+      node {
+        id
+        excerpt
+        author {
+          node {
+            name
+          }
+        }
+        title
+        slug
+        language {
+          code
+          locale
+        }
+        featuredImage {
+          node {
+            mediaItemUrl
+            altText
+          }
+        }
+      }
+    }
+  }
+}

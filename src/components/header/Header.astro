@@ -1,10 +1,11 @@
 ---
+import { getLanguageFromUrl } from "@/utils/helpers";
 import fbIcon from "../../assets/icons/fb-icon.svg?raw";
 import LanguageSelector from "../language-selector/LanguageSelector.astro";
 import SearchIcon from "../search-icon/SearchIcon.astro";
 import "./header.css";
 
-const currentLanguageFromUrl = Astro.url.pathname.split("/")[1]
+const currentLanguageFromUrl = getLanguageFromUrl(Astro.url.pathname);
 ---
 
 <header aria-label="Quick links" class="header">

@@ -2,6 +2,12 @@
   position: relative;
 }
 
+@media (max-width: 500px) {
+  .settings-wrapper {
+    display: none;
+  }
+}
+
 .settings {
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
@@ -16,13 +22,13 @@
 .settings-container {
   display: none;
   position: absolute;
-  top: 4.5rem;
+  top: 6.5rem;
   right: 0;
   gap: 0.5rem;
   padding: 1rem;
   border-radius: 1rem;
   background-color: var(--light-gray);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: 2px 2px 2px var(--secondary-clr);
 }
 
 .increase-font,
