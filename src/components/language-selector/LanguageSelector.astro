@@ -1,11 +1,14 @@
 ---
+import { locale } from "src/types/types";
 import "./language-selector.css";
 const currentLang = Astro.url.pathname.split("/")[1];
+const englishOption = currentLang === locale.en ? "English" : "Angielski";
+const polishOption = currentLang === locale.pl ? "Polski" : "Polish";
 ---
 
 <select name="language-selector" class="language-selector">
-  <option value="en">{currentLang === "en" ? "English" : "Angielski"}</option>
-  <option value="pl">{currentLang === "pl" ? "Polski" : "Polish"}</option>
+  <option value="en">{englishOption}</option>
+  <option value="pl">{polishOption}</option>
 </select>
 
 <script is:inline>
@@ -14,7 +17,7 @@ const currentLang = Astro.url.pathname.split("/")[1];
 
     if (!languageSelector) return;
 
-    const currentLang = window.location.pathname.split("/")[1] || "en";
+    const currentLang = window.location.pathname.split("/")[1] || locale.en;
     languageSelector.value = currentLang;
     localStorage.setItem("preferredLanguage", currentLang);
 

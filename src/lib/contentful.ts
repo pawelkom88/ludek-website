@@ -1,4 +1,5 @@
 import contentful, { type EntrySkeletonType } from "contentful";
+import { locale } from "src/types/types";
 
 export const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
@@ -14,6 +15,6 @@ export async function getEntries<T extends EntrySkeletonType>(
 ) {
   return await contentfulClient.getEntries<T>({
     content_type,
-    locale: lang === "en" ? "en-GB" : "pl",
+    locale: lang === locale.en ? locale.enGB : locale.pl,
   });
 }

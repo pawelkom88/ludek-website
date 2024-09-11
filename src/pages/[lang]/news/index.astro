@@ -1,0 +1,25 @@
+---
+import Article from "@/components/article/Article";
+import Layout from "@/layouts/Layout";
+import type { NewsPosts } from "src/lib/content-types/TypeNews";
+import { getEntries } from "src/lib/contentful";
+
+const { lang } = Astro.params;
+
+const entries = await getEntries<NewsPosts>("news", lang!);
+const allArticles = entries.items.map((entry) => entry.fields);
+---
+
+<Layout title="Ludek" description="Ludek" image="">
+  <h1>News</h1>
+  <ol class="article-grid">
+    {allArticles.map((article) => <Article article={article} />)}
+  </ol>
+</Layout>
+
+<style>
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+</style>

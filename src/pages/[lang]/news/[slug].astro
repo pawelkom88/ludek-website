@@ -7,7 +7,9 @@ import { Image } from "astro:assets";
 import type { ContentfulImage, NewsPosts } from "src/lib/content-types/TypeNews";
 import { contentfulClient } from "src/lib/contentful";
 import "./news.css";
+import { locale } from "src/types/types";
 
+// how to make sure slug is in the right language
 const { slug, lang } = Astro.params;
 
 let post;
@@ -15,7 +17,7 @@ try {
   const data = await contentfulClient.getEntries<NewsPosts>({
     content_type: "news",
     "fields.slug": slug,
-    locale: lang === "en" ? "en-GB" : "pl",
+    locale: lang === locale.en ? locale.enGB : locale.pl,
   });
 
   if (data.items.length === 0) {
@@ -36,7 +38,7 @@ try {
 }
 ---
 
-<Layout title="Ludek" description="Ludek" image="">
+<Layout title="Ludek" description="Ludek" image="" jsonLDType="article" postData={post}>
   <article class="article">
     <header class="article-header title-heading article-header-single">
       <h1>{post.title}</h1>

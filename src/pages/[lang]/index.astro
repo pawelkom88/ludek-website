@@ -6,9 +6,31 @@ import Partners from "@/components/partners/Partners";
 import Layout from "@/layouts/Layout";
 
 const { lang } = Astro.params;
+
+const englishData = {
+  title: "Ludek",
+  description: "Ludek",
+};
+
+const polishData = {
+  title: "Ludek",
+  description: "Ludek",
+};
+
+const data = {
+  pl: polishData,
+  en: englishData,
+};
+
+type Locale = keyof typeof data;
 ---
 
-<Layout title="Ludek" description="Ludek" image="">
+<Layout
+  title={data[lang as Locale].title}
+  description={data[lang as Locale].description}
+  image=""
+  jsonLDType="website"
+>
   <MainGrid lang={lang} />
   <br />
   <Events lang={lang} />

@@ -27,11 +27,41 @@ const links = navContent?.data || {};
 </nav>
 
 <script>
-  const links = document.querySelector(".main-ul");
+  function handleNavigation() {
+    const mainUl = document.querySelector(".main-ul") as HTMLUListElement;
 
-  // links?.addEventListener("click", (e: MouseEvent) => {
-  //   if (e.currentTarget === "li") {
-  //     e.currentTarget.classList.toggle("active-link");
-  //   }
-  // });
+    function setActiveLink(targetLink: Element) {
+      const links = mainUl.querySelectorAll(".underline-link");
+      links.forEach((link) => link.classList.remove("active-link"));
+      targetLink.classList.add("active-link");
+    }
+
+    function updateActiveLink() {
+      const currentPath = window.location.pathname;
+      const links = mainUl.querySelectorAll(".underline-link");
+      links.forEach((link) => {
+        if (link.getAttribute("href") === currentPath) {
+          setActiveLink(link);
+        }
+      });
+    }
+
+    mainUl.addEventListener("click", (e: Event) => {
+      const link = (e.target as Element).closest(".underline-link");
+      if (link) {
+        setActiveLink(link);
+      }
+    });
+
+    updateActiveLink();
+
+    // Listen for View Transition navigation events
+    document.addEventListener("astro:after-swap", updateActiveLink);
+  }
+
+  // Run on initial load
+  handleNavigation();
+
+  // Re-run after each View Transition
+  document.addEventListener("astro:after-swap", handleNavigation);
 </script>

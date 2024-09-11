@@ -15,20 +15,24 @@ interface Props {
   ogImage?: string;
   articleDate?: string;
   image?: string;
+  jsonLDType?: 'website' | 'article'
+  postData?: any
 }
 
-const { title, description, image, articleDate } = Astro.props;
+const { title, description, image, articleDate, jsonLDType , postData} = Astro.props;
 const { lang } = Astro.params;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <BaseHead
       title={title}
       description={description}
       ogImage={image}
       articleDate={articleDate}
+      jsonLDType={jsonLDType}
+      postData={postData}
     />
   </head>
   <body>
