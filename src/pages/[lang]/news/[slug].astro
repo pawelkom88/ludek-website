@@ -1,0 +1,66 @@
+---
+import SettingsIcon from "@/components/settings-icon/SettingsIcon";
+import Layout from "@/layouts/Layout";
+import { formatDate } from "@/utils/helpers";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { Image } from "astro:assets";
+import type { ContentfulImage, NewsPosts } from "src/lib/content-types/TypeNews";
+import { contentfulClient } from "src/lib/contentful";
+import "./news.css";
+
+const { slug, lang } = Astro.params;
+
+let post;
+try {
+  const data = await contentfulClient.getEntries<NewsPosts>({
+    content_type: "news",
+    "fields.slug": slug,
+    locale: lang === "en" ? "en-GB" : "pl",
+  });
+
+  if (data.items.length === 0) {
+    return Astro.redirect(`/${lang}/404`);
+  }
+
+  const { title, date, content, author, image } = data.items[0].fields;
+  post = {
+    title,
+    date: new Date(date).toLocaleDateString(),
+    content: documentToHtmlString(content),
+    author,
+    image: image as ContentfulImage,
+  };
+} catch (error) {
+  console.error("Error fetching post:", error);
+  return Astro.redirect(`/${lang}/404`);
+}
+---
+
+<Layout title="Ludek" description="Ludek" image="">
+  <article class="article">
+    <header class="article-header title-heading article-header-single">
+      <h1>{post.title}</h1>
+      <SettingsIcon />
+    </header>
+    <br />
+    <div class="article-image-container">
+      <Image
+        class="article-image article-image-single"
+        format="webp"
+        src={`https:${post.image.fields.file.url}`}
+        alt={`${post.image.fields.title || ""}`}
+        width="650"
+        height="450"
+      />
+    </div>
+    <div class="article-text article-text-single">
+      <Fragment set:html={post.content} />
+    </div>
+    <br />
+    <hr class="article-hr" />
+    <footer class="article-footer-single">
+      <datetime>Posted: {formatDate(post.date)}</datetime>
+      <p>Written by: {post.author}</p>
+    </footer>
+  </article>
+</Layout>

@@ -1,31 +1,15 @@
 ---
-import type { EntryFieldTypes } from "contentful";
-import { contentfulClient } from "src/lib/contentful";
+import { getEntries } from "src/lib/contentful";
 import AboutCard from "../about-card/AboutCard.astro";
 import Article from "../article/Article.astro";
 import SubscriptionForm from "../subscription-form/SubscriptionForm.astro";
 import ThreeLineSeparator from "../three-line-separator/ThreeLineSeparator.astro";
 import "./main-grid.css";
+import type { NewsPosts } from "src/lib/content-types/TypeNews";
 
-export interface NewsPosts {
-  contentTypeId: "news";
-  fields: {
-    title: EntryFieldTypes.Text;
-    content: EntryFieldTypes.RichText;
-    image: EntryFieldTypes.AssetLink;
-    date: EntryFieldTypes.Date;
-    slug: EntryFieldTypes.Text;
-    author: EntryFieldTypes.Text;
-  };
-}
 const { lang } = Astro.props;
 
-const entries = await contentfulClient.getEntries<NewsPosts>({
-  content_type: "news",
-  // function !
-  locale: lang === "en" ? "en-GB" : "pl",
-});
-
+const entries = await getEntries<NewsPosts>("news", lang);
 const [firstPost, ...restPosts] = entries.items.map((entry) => entry.fields);
 ---
 

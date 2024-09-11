@@ -8,7 +8,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "cf-export": "contentful space export --config src/lib/export-config.json --management-token $CONTENTFUL_ACCESS_TOKEN --space-id $CONTENTFUL_SPACE_ID",
+    "cf-generate-types": "cf-content-types-generator src/lib/export.json --out src/lib/content-types"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -22,6 +24,8 @@
     "contentful": "^10.15.1"
   },
   "devDependencies": {
+    "cf-content-types-generator": "^2.15.5",
+    "contentful-cli": "^3.3.9",
     "typescript": "^5.6.2"
   }
 }

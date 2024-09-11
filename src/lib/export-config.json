@@ -1,0 +1,5 @@
+{
+  "exportDir": "src/lib",
+  "contentFile": "export.json",
+  "downloadAssets": true
+}
